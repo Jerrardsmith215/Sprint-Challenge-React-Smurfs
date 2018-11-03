@@ -25,11 +25,21 @@ class App extends Component {
         console.error('Server Error', error);
 })};
 
+  createSmurf(newSmurf) {
+    axios
+    .post('http://localhost:3333/smurfs', newSmurf)
+    .then(response => {this.setState(() => ({smurfs: response.data}));
+    })
+    .catch(error => {
+    console.error('Server Error', error);
+});
+  }
+
   render() {
     return (
       <div className="App">
         <Route render={props => <SmurfForm {...props}/>}/>
-        <Route render={props => <Smurfs smurfs={this.state.smurfs} {...props}/>}/>
+        <Route render={props => <Smurfs addSmurf={this.createSmurf} smurfs={this.state.smurfs} {...props}/>}/>
       </div>
     );
   }

@@ -14,19 +14,13 @@ class SmurfForm extends Component {
   addSmurf = event => {
     event.preventDefault();
 
-    const newSmurf = {
+    const aNewSmurf = {
       name: this.state.name,
       age: this.state.age,
       email: this.state.height
     }
 
-    axios
-    .post('http://localhost:3333/smurfs', newSmurf)
-    .then(response => {this.setState(() => ({}));
-    })
-    .catch(error => {
-    console.error('Server Error', error);
-});
+    this.props.createSmurf(aNewSmurf)
   }
 
   handleInputChange = e => {
