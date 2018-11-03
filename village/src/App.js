@@ -27,13 +27,11 @@ class App extends Component {
 
   createSmurf(newSmurf) {
     axios
-    .post('http://localhost:3333/smurfs', newSmurf)
-    .then(response => {this.setState({smurfs: response.data});
-    })
-    .catch(error => {
-    console.error('Server Error', error);
-});
-  }
+      .post("http://localhost:3333/smurfs", newSmurf)
+      .then(response => {
+        this.setState({smurfs: response.data});})
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
